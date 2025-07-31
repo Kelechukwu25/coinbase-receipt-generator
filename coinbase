@@ -1,0 +1,31 @@
+class CoinbaseReceipt:
+    def _init_(self, sender, receiver, amount, transaction_id, date):
+        self.sender = sender
+        self.receiver = receiver
+        self.amount = amount
+        self.transaction_id = transaction_id
+        self.date = date
+
+    def generate_receipt(self):
+        return f"""
+        Coinbase Receipt
+        ---------------------
+        From: {self.sender}
+        To: {self.receiver}
+        Amount: {self.amount} BTC
+        Transaction ID: {self.transaction_id}
+        Date: {self.date}
+        ---------------------
+        Verified by Coinbase
+        """
+
+# Example usage
+receipt = CoinbaseReceipt(
+    sender="user@example.com",
+    receiver="merchant@example.com",
+    amount=0.023,
+    transaction_id="abc123def456",
+    date="2025-07-31"
+)
+
+print(receipt.generate_receipt())
